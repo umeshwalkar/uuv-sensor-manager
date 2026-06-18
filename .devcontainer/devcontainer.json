@@ -1,0 +1,68 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"name": "sensor_manager_dev",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/sensor_manager",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	
+	"customizations": {
+        "vscode": {
+            "extensions": [
+                // added by VSCode
+                "ms-vscode.cpptools",
+				"ms-vscode.cmake-tools",
+				"anthropic.claude-code"
+            ]
+        }
+	},
+
+	// Specific behavior for each port (for port forwarding UI)
+    "portsAttributes": {
+		// "4001": {
+      	// 	"label": "(GPS -> INS)",
+      	// 	"protocol": "tcp",
+		// 	"onAutoForward": "notify"
+    	// },
+		// "4002": {
+      	// 	"label": "(USBL -> INS)",
+      	// 	"protocol": "tcp",
+		// 	"onAutoForward": "notify"
+    	// },
+		// "4003": {
+      	// 	"label": "(XPOS -> INS)",
+      	// 	"protocol": "tcp",
+		// 	"onAutoForward": "notify"
+    	// },
+		// "4004": {
+      	// 	"label": "(Sound Velocity -> INS)",
+      	// 	"protocol": "tcp",
+		// 	"onAutoForward": "notify"
+    	// },
+		// "4005": {
+		// 	"label": "(HNAV <- INS)",
+		// 	"protocol": "tcp",
+		// 	"onAutoForward": "notify"
+		// },
+		// "9003": {
+		// 	"label": "(HNAV <- INS)",
+		// 	"protocol": "udp",
+		// 	"onAutoForward": "notify"
+		// }
+	}
+
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "cat /etc/os-release",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "devcontainer"
+}

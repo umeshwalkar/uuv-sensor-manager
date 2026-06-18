@@ -1,0 +1,12 @@
+services:
+  app:
+    image: sensor_manager_dev
+    container_name: sensor_manager_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/sensor_manager: V  
+    command: sleep infinity
+    extra_hosts:
+      - host.docker.internal:host-gateway

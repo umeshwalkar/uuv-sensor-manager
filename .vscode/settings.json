@@ -1,0 +1,6 @@
+{
+    "cmake.debugConfig": {
+        "args": ["${workspaceFolder}/config/sensor_config.json"],
+        "cwd": "${workspaceFolder}/build"
+    }
+}

@@ -1,0 +1,90 @@
+{
+  "_comment": "My sensor Manager configuration",
+  "debug": {
+    "enabled": true,
+    "level": "debug"
+  },
+  "mqtt": {
+    "enabled": true,
+    "broker": "host.docker.internal",
+    "port": 1883,
+    "client_id": "sensor_manager",
+    "keepalive": 60,
+    "qos": 1,
+    "retain": false,
+    "topics": {
+      "pub": [
+        {
+          "name": "sensor",
+          "topic": "uuv/sensor",
+          "debug": true,
+          "publish_interval_ms": 1000
+        },
+        {
+          "name": "status",
+          "topic": "sensor/status",
+          "debug": true,
+          "publish_interval_ms": 5000
+        }
+      ],
+      "sub": []
+    }
+  },
+  "sensor": {
+    "transport": [
+      {
+        "id": "ch1",
+        "enabled": true,
+        "type": "tcp_client",
+        "host": "host.docker.internal",
+        "port": 4006,
+        "connect_timeout_sec": 5,
+        "reconnect_delay_sec": 3,
+        "buffer_size_bytes": 128
+      }
+    ],
+    "devices": [
+      {
+        "id": 1,
+        "name": "sensor_device",
+        "publish_enabled": true,
+        "publish_raw_data": false,
+        "publish_interval_ms": 1000,
+        "validate_checksum": true,
+        "send_init_on_reconnect": false,
+        "init_commands": [
+          "$020;0",
+          "$022;0",
+          "$024;0",
+          "$026;0",
+          "$030;0",
+          "$032;0",
+          "$601;0",
+          "$034;0",
+          "$605;0",
+          "$016;4"
+        ],
+        "input_channels": {
+          "data_rx": {
+            "enabled": true,
+            "debug": true,
+            "data_timeout_sec": 2.0,
+            "transport": {
+              "id": "ch1",
+              "read_timeout_ms": 1000
+            }
+          }
+        },
+        "output_channels": {
+          "commands": {
+            "enabled": true,
+            "debug": false,
+            "transport": {
+              "id": "ch1"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

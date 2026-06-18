@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "rm -rf build",
+            "options": { "cwd": "${workspaceFolder}" }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug && cmake --build build --parallel",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": ["$gcc"],
+            "detail": "cmake and build together"
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "./sensor_manager",
+            "args": ["${workspaceFolder}/config/sensor_config.json"],
+            "options": { "cwd": "${workspaceFolder}/build" },
+            "dependsOn": ["build"]
+        }
+    ]
+}
