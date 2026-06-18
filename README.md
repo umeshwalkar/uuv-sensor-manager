@@ -268,8 +268,11 @@ Use these values as the starting point for your own sensor and MQTT environment.
 - The `run` task passes `config/sensor_config.json` to the built executable.
 - Any `sensor.devices[0].input_channels.data_rx.transport.id` value must match one of the `sensor.transport[].id` entries.
 - If you change transport settings, update the device input channel to reference the correct transport id.
-- All **sensor** word replace with your actual sensosr name like INS, Pressure, Depth, etc..
 - The nmea sentence is used for example parsing; actual parser shall be as per the sensor device interface protocol.
+- run **rename_script.py** script in the workspace folder to change labels to new device name.
+```bash
+python3 rename_script.py --old sensor --new your_device_name
+```
 
 ---
 
